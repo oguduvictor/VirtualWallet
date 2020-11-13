@@ -2,10 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using VirtualWallet.Application.DTOs.Account;
-using VirtualWallet.Application.Interfaces;
+using VirtualWallet.Application.Interfaces.Services;
 
 namespace VirtualWallet.WebApi.Controllers
 {
+    /// <summary>
+    /// Controller for managing Account related stuffs
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
@@ -17,18 +20,24 @@ namespace VirtualWallet.WebApi.Controllers
             _accountService = accountService;
         }
 
+        /// <summary>
+        /// Authenticates
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost("authenticate")]
-        public async Task<IActionResult> AuthenticateAsync(AuthenticationRequest request)
+        public async Task<ActionResult<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request)
         {
             return Ok(await _accountService.AuthenticateAsync(request, GenerateIPAddress()));
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterAsync(RegisterRequest request)
+        public async Task<ActionResult> RegisterAsync(RegisterRequest request)
         {
-            var origin = Request.Headers["origin"];
+            // var origin = Request.Headers["origin"];
+            var ipAddress = GenerateIPAddress();
 
-            return Ok(await _accountService.RegisterAsync(request, origin));
+            return Ok(await _accountService.RegisterAsync(request, ipAddress));
         }
 
         [HttpGet("confirm-email")]

@@ -6,7 +6,7 @@ using MimeKit;
 using System.Threading.Tasks;
 using VirtualWallet.Application.DTOs.Email;
 using VirtualWallet.Application.Exceptions;
-using VirtualWallet.Application.Interfaces;
+using VirtualWallet.Application.Interfaces.Services;
 using VirtualWallet.Domain.Settings;
 
 namespace VirtualWallet.Infrastructure.Shared.Services

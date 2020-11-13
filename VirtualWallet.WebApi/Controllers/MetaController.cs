@@ -5,6 +5,10 @@ namespace VirtualWallet.WebApi.Controllers
 {
     public class MetaController : BaseApiController
     {
+        /// <summary>
+        /// Get Info about the system
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("/info")]
         public ActionResult<string> Info()
         {

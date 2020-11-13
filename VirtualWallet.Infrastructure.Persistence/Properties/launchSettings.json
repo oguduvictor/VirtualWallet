@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "VirtualWallet.Infrastructure.Persistence": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

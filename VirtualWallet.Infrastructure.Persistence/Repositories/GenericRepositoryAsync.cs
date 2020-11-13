@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
-using VirtualWallet.Application.Interfaces;
+using VirtualWallet.Application.Interfaces.Repositories;
 using VirtualWallet.Infrastructure.Persistence.Contexts;
 
 namespace VirtualWallet.Infrastructure.Persistence.Repository
@@ -31,6 +33,36 @@ namespace VirtualWallet.Infrastructure.Persistence.Repository
                 .ToListAsync();
         }
 
+        public async Task<IReadOnlyList<T>> GetPagedReponseAsync(
+            int pageNumber,
+            int pageSize,
+            Expression<Func<T, bool>> predicate)
+        {
+            return await _dbContext
+                .Set<T>()
+                .Where(predicate)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> GetPagedReponseAsync<TProperty>(
+            int pageNumber,
+            int pageSize,
+            Expression<Func<T, bool>> predicate,
+            Expression<Func<T, TProperty>> navigationalPropertyPath)
+        {
+            return await _dbContext
+                .Set<T>()
+                .Where(predicate)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .Include(navigationalPropertyPath)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
         public async Task<T> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
@@ -48,6 +80,14 @@ namespace VirtualWallet.Infrastructure.Persistence.Repository
         {
             _dbContext.Set<T>().Remove(entity);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbContext
+                 .Set<T>()
+                 .Where(predicate)
+                 .ToListAsync();
         }
 
         public async Task<IReadOnlyList<T>> GetAllAsync()

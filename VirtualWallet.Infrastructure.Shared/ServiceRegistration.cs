@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using VirtualWallet.Application.Interfaces;
+using VirtualWallet.Application.Interfaces.Services;
 using VirtualWallet.Domain.Settings;
 using VirtualWallet.Infrastructure.Shared.Services;
 

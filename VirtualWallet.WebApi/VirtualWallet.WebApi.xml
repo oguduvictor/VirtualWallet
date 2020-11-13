@@ -4,5 +4,55 @@
         <name>VirtualWallet.WebApi</name>
     </assembly>
     <members>
+        <member name="T:VirtualWallet.WebApi.Controllers.AccountController">
+            <summary>
+            Controller for managing Account related stuffs
+            </summary>
+        </member>
+        <member name="M:VirtualWallet.WebApi.Controllers.AccountController.AuthenticateAsync(VirtualWallet.Application.DTOs.Account.AuthenticationRequest)">
+            <summary>
+            Authenticates
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualWallet.WebApi.Controllers.MetaController.Info">
+            <summary>
+            Get Info about the system
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualWallet.WebApi.Controllers.v1.WalletController">
+            <summary>
+            Controller for managing wallet and transactions.
+            </summary>
+        </member>
+        <member name="M:VirtualWallet.WebApi.Controllers.v1.WalletController.CreateWallet">
+            <summary>
+            Create Wallet and generate an account number.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualWallet.WebApi.Controllers.v1.WalletController.Deposit(VirtualWallet.Application.Features.Wallets.Commands.Deposit.DepositCommand)">
+            <summary>
+            Deposit money into user's wallet.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualWallet.WebApi.Controllers.v1.WalletController.Withdraw(VirtualWallet.Application.Features.Wallets.Commands.Deposit.WithdrawCommand)">
+            <summary>
+            Withdraw from user's wallet.
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualWallet.WebApi.Controllers.v1.WalletController.GetTransactions(VirtualWallet.Application.Features.Wallets.Queries.GetTransactions.GetAllTransactionsParameter)">
+            <summary>
+            Get Logged-in user's transactions.
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

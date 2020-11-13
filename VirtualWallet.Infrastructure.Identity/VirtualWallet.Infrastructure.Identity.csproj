@@ -5,19 +5,19 @@
     <Version>1.1.0</Version>
   </PropertyGroup>
 <ItemGroup>
-  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
-  <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.7" />
-  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+  <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.9" />
+  <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.9" />
+  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
     <PrivateAssets>all</PrivateAssets>
     <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
   </PackageReference>
-  <PackageReference Include="microsoft.extensions.dependencyinjection" Version="3.1.7" />
-  <PackageReference Include="MimeKit" Version="2.9.1" />
-  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.7" />
-  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.7.1" />
-  <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.7" />
+  <PackageReference Include="microsoft.extensions.dependencyinjection" Version="3.1.9" />
+  <PackageReference Include="MimeKit" Version="2.9.2" />
+  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.9" />
+  <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+  <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.9" />
   </ItemGroup>
 <ItemGroup>
   <ProjectReference Include="..\VirtualWallet.Application\VirtualWallet.Application.csproj" />

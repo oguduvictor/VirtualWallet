@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualWallet.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualWallet.WebApi", "VirtualWallet.WebApi\VirtualWallet.WebApi.csproj", "{B874B9A8-1019-42E1-96AA-4C75D24A68FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualWallet.Broker", "VirtualWallet.Broker\VirtualWallet.Broker.csproj", "{DF160BFF-D756-41BB-B32F-58C1E57D5E40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualWallet.Broker", "VirtualWallet.Broker\VirtualWallet.Broker.csproj", "{DF160BFF-D756-41BB-B32F-58C1E57D5E40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

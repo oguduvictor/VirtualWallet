@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
-using VirtualWallet.Application.Interfaces;
+using VirtualWallet.Application.Interfaces.Services;
 
 namespace VirtualWallet.WebApi.Services
 {

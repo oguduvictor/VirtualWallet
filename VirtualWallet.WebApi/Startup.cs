@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VirtualWallet.Application;
-using VirtualWallet.Application.Interfaces;
+using VirtualWallet.Application.Interfaces.Services;
 using VirtualWallet.Infrastructure.Identity;
 using VirtualWallet.Infrastructure.Persistence;
 using VirtualWallet.Infrastructure.Shared;

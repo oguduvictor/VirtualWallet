@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using VirtualWallet.Application.Interfaces;
+using VirtualWallet.Application;
+using VirtualWallet.Application.Interfaces.Services;
 using VirtualWallet.Domain.Common;
 using VirtualWallet.Domain.Entities;
 
@@ -13,14 +13,55 @@ namespace VirtualWallet.Infrastructure.Persistence.Contexts
     {
         private readonly IAuthenticatedUserService _authenticatedUser;
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IAuthenticatedUserService authenticatedUser) : base(options)
+        public ApplicationDbContext(
+            DbContextOptions<ApplicationDbContext> options,
+            IAuthenticatedUserService authenticatedUser) : base(options)
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             _authenticatedUser = authenticatedUser;
         }
-        public DbSet<Product> Products { get; set; }
+
+        public ApplicationDbContext()
+        {
+        }
+
+        public DbSet<Wallet> Wallets { get; set; }
+
+        public DbSet<Transaction> Transactions { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            OnBeforeSaving();
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
+        public override int SaveChanges()
+        {
+            OnBeforeSaving();
+
+            return base.SaveChanges();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connectionString = ConfigurationHelper.GetConnectionString("DefaultConnection");
+
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        }
+
+        private void OnBeforeSaving()
         {
             foreach (var entry in ChangeTracker.Entries<AuditableBaseEntity>())
             {
@@ -36,18 +77,7 @@ namespace VirtualWallet.Infrastructure.Persistence.Contexts
                         break;
                 }
             }
-            return base.SaveChangesAsync(cancellationToken);
         }
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            //All Decimals will have 18,6 Range
-            foreach (var property in builder.Model.GetEntityTypes()
-            .SelectMany(t => t.GetProperties())
-            .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?)))
-            {
-                property.SetColumnType("decimal(18,6)");
-            }
-            base.OnModelCreating(builder);
-        }
+
     }
 }

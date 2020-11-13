@@ -13,8 +13,8 @@ namespace VirtualWallet.Infrastructure.Identity.Seeds
             //Seed Default User
             var defaultUser = new ApplicationUser
             {
-                UserName = "basicuser",
-                Email = "basicuser@gmail.com",
+                UserName = "john.doe",
+                Email = "john.doe@mail.com",
                 FirstName = "John",
                 LastName = "Doe",
                 EmailConfirmed = true,

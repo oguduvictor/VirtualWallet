@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using VirtualWallet.Application.Interfaces;
 using VirtualWallet.Application.Interfaces.Repositories;
 using VirtualWallet.Infrastructure.Persistence.Contexts;
 using VirtualWallet.Infrastructure.Persistence.Repositories;
@@ -25,9 +24,11 @@ namespace VirtualWallet.Infrastructure.Persistence
                    configuration.GetConnectionString("DefaultConnection"),
                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
             }
+
             #region Repositories
             services.AddScoped(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
-            services.AddScoped<IProductRepositoryAsync, ProductRepositoryAsync>();
+            services.AddScoped<ITransactionRepositoryAsync, TransactionRepositoryAsync>();
+            services.AddScoped<IWalletRepositoryAsync, WalletRepositoryAsync>();
             #endregion
         }
     }

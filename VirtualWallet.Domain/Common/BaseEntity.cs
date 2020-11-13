@@ -1,7 +1,9 @@
-﻿namespace VirtualWallet.Domain.Common
+﻿using System;
+
+namespace VirtualWallet.Domain.Common
 {
     public abstract class BaseEntity
     {
-        public virtual int Id { get; set; }
+        public virtual Guid Id { get; set; }
     }
 }
